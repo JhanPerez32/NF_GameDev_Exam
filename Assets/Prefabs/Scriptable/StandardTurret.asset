@@ -18,6 +18,7 @@ MonoBehaviour:
   minRange: 15
   maxRange: 30
   maxBullets: 10
+  fireRate: 20
   reloadTime: 2
   projectileSpeed: 20
   projectileDamage: 10

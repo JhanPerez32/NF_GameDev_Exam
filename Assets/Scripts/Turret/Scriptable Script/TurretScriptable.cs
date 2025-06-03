@@ -3,7 +3,7 @@ using UnityEngine;
 namespace NF.TD.BaseTurret
 {
     [CreateAssetMenu(fileName = "New Turret", menuName = "TurretScriptable/BaseTurret")]
-    public class BaseTurret : ScriptableObject
+    public class TurretScriptable : ScriptableObject
     {
         [Header("Turret")]
 
