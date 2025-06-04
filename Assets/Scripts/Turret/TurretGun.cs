@@ -1,12 +1,12 @@
 using NF.TD.BaseTurret;
 using NF.TD.Bullet;
 using NF.TD.Turret;
-using System.Net.Sockets;
+using NF.TD.TurretCore;
 using UnityEngine;
 
 namespace NF.TD.Gun
 {
-    public class TurretGun : MonoBehaviour
+    public class TurretGun : MonoBehaviour, IShooting, ITargeting
     {
         [HideInInspector]
         public Transform target;
@@ -115,6 +115,11 @@ namespace NF.TD.Gun
             }
 
             return false;
+        }
+
+        public void SetTarget(Transform newTarget)
+        {
+            target = newTarget;
         }
 
         /*TODO:

@@ -1,8 +1,9 @@
+using NF.TD.TurretCore;
 using UnityEngine;
 
 namespace NF.TD.Joints
 {
-    public class TurretJoints : MonoBehaviour
+    public class TurretJoints : MonoBehaviour, IAiming
     {
         //NOTE: Don't delete this 2
         //These are kept for compatibility or future reference (e.g., range checking), but hidden from the inspector
@@ -68,6 +69,12 @@ namespace NF.TD.Joints
             turret.rotation = Quaternion.RotateTowards(turret.rotation, targetRotation, turnSpeed * Time.deltaTime);
 
             return aimed;
+        }
+
+        public bool AimAtTarget(Transform target)
+        {
+            if (target == null) return false;
+            return Aim(target.position);
         }
     }
 }
