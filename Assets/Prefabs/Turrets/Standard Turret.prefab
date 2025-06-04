@@ -670,13 +670,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4873264607153157898}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.0074176053, z: 0, w: 0.9999725}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6557900490948697013}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.85, z: 0}
 --- !u!1 &5037947533491339323
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,13 +752,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   maxSpreadDistance: 30
+  fireRate: 0
+  spreadScale: 0
   turret: {fileID: 6728009308077406553}
   shotPrefab: {fileID: 8853936679608007497, guid: 92a33d02f4e95d04ea07b0361e016505, type: 3}
   bulletSpawnPoint:
   - {fileID: 2718478955082509098}
   - {fileID: 7500946212226421994}
-  fireRate: 0
-  spreadScale: 0
 --- !u!114 &2520743346306922717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,13 +828,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931762832867580715}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.0074176053, z: 0, w: 0.9999725}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1617728937430823482}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.85, z: 0}
 --- !u!1 &7254634417188132114
 GameObject:
   m_ObjectHideFlags: 0
