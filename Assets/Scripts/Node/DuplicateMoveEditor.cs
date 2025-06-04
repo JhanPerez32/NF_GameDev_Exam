@@ -1,48 +1,93 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class DuplicateMoveEditor : EditorWindow
 {
-    private static Vector3 moveOffset = new Vector3(5f, 0f, 0f); // Adjust as needed
+    private Vector3 moveOffset = new Vector3(0f, 0f, 5f);
+    private List<GameObject> prefabList = new List<GameObject>();
 
     [MenuItem("Tools/Duplicate Prefab and Move %#d")] // Ctrl+Shift+D
-    static void DuplicateAndMove()
+    public static void ShowWindow()
     {
-        if (Selection.activeGameObject == null)
+        GetWindow<DuplicateMoveEditor>("Duplicate & Move");
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Label("Ground Generator Tool", EditorStyles.boldLabel);
+
+        // Move offset field
+        moveOffset = EditorGUILayout.Vector3Field("Move Offset", moveOffset);
+
+        GUILayout.Space(10);
+        GUILayout.Label("Prefab List", EditorStyles.boldLabel);
+
+        // Draw prefab list
+        for (int i = 0; i < prefabList.Count; i++)
         {
-            Debug.LogWarning("No GameObject selected to duplicate.");
-            return;
+            EditorGUILayout.BeginHorizontal();
+            prefabList[i] = (GameObject)EditorGUILayout.ObjectField(prefabList[i], typeof(GameObject), false);
+            if (GUILayout.Button("X", GUILayout.Width(20)))
+            {
+                prefabList.RemoveAt(i);
+                i--;
+            }
+            EditorGUILayout.EndHorizontal();
         }
 
-        GameObject selectedObject = Selection.activeGameObject;
-
-        // Check if it's a prefab instance
-        if (PrefabUtility.IsPartOfPrefabInstance(selectedObject))
+        // Add new slot
+        if (GUILayout.Button("+ Add Prefab"))
         {
-            GameObject duplicatedObject = (GameObject)PrefabUtility.InstantiatePrefab(PrefabUtility.GetCorrespondingObjectFromSource(selectedObject));
-            duplicatedObject.transform.position = selectedObject.transform.position + moveOffset;
-
-            // Set unique name without nested parentheses
-            duplicatedObject.name = GetUniqueName(selectedObject.name);
-
-            Undo.RegisterCreatedObjectUndo(duplicatedObject, "Duplicate and Move Prefab");
-            Selection.activeGameObject = duplicatedObject;
+            prefabList.Add(null);
         }
-        else
+
+        GUILayout.Space(10);
+        if (GUILayout.Button("Duplicate Random Prefab"))
         {
-            Debug.LogWarning("Selected object is not a turretModel instance.");
+            DuplicateRandomPrefab();
         }
     }
 
-    static string GetUniqueName(string baseName)
+    private void DuplicateRandomPrefab()
     {
-        // Remove any existing number suffix like "(1)"
-        string cleanBaseName = System.Text.RegularExpressions.Regex.Replace(baseName, @"\(\d+\)$", "");
+        if (prefabList.Count == 0)
+        {
+            Debug.LogWarning("No prefabs assigned.");
+            return;
+        }
 
+        // Filter out nulls
+        List<GameObject> validPrefabs = prefabList.FindAll(prefab => prefab != null);
+        if (validPrefabs.Count == 0)
+        {
+            Debug.LogWarning("All prefab slots are empty.");
+            return;
+        }
+
+        GameObject selectedPrefab = validPrefabs[Random.Range(0, validPrefabs.Count)];
+        GameObject newObject = (GameObject)PrefabUtility.InstantiatePrefab(selectedPrefab);
+
+        newObject.transform.position = GetLastPlacedPosition() + moveOffset;
+        newObject.name = GetUniqueName(selectedPrefab.name);
+
+        Undo.RegisterCreatedObjectUndo(newObject, "Duplicate Ground Piece");
+        Selection.activeGameObject = newObject;
+    }
+
+    private Vector3 GetLastPlacedPosition()
+    {
+        return Selection.activeGameObject != null
+            ? Selection.activeGameObject.transform.position
+            : Vector3.zero;
+    }
+
+    private static string GetUniqueName(string baseName)
+    {
+        string cleanBaseName = System.Text.RegularExpressions.Regex.Replace(baseName, @"\(\d+\)$", "");
         int count = 1;
         string newName = $"{cleanBaseName}({count})";
 
-        // Ensure no duplicates in the scene
         while (GameObject.Find(newName) != null)
         {
             count++;
