@@ -12,6 +12,8 @@ namespace NF.TD.TurretCore
     {
         [HideInInspector]
         public Transform target;
+        [HideInInspector]
+        public float lastMinRange, lastMaxRange;
 
         public TurretScriptable turretData;
 
@@ -26,10 +28,8 @@ namespace NF.TD.TurretCore
         [Header("Target Tag")]
         public string enemyTag = "Enemy";
 
-        private int currentBullets;
-        private bool reloading = false;
-
-        private float lastMinRange, lastMaxRange;
+        public int currentBullets;
+        public bool reloading = false;
 
         void OnValidate()
         {
@@ -51,6 +51,42 @@ namespace NF.TD.TurretCore
             }
         }
 
+        private void Start()
+        {
+            currentBullets = turretData.maxBullets;
+            InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        }
+
+        void UpdateTarget()
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+            float closestValidDistance = Mathf.Infinity;
+            GameObject selectedEnemy = null;
+
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (distance >= turretData.minRange && distance <= turretData.maxRange)
+                {
+                    if (distance < closestValidDistance)
+                    {
+                        closestValidDistance = distance;
+                        selectedEnemy = enemy;
+                    }
+                }
+            }
+
+            if (selectedEnemy != null)
+            {
+                target = selectedEnemy.transform;
+            }
+            else
+            {
+                target = null;
+            }
+        }
     }
 }
 

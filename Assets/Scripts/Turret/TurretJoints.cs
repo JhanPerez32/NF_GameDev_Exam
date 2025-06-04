@@ -1,4 +1,4 @@
-using NF.TD.TurretCore;
+using NF.TD.Interfaces;
 using UnityEngine;
 
 namespace NF.TD.Joints

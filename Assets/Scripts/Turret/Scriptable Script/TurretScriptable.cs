@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace NF.TD.BaseTurret
 {
+    /// <summary>
+    /// General Setting for the Turret, for easy accesss on the Information to be dissplayed on the Shop
+    /// </summary>
+
     [CreateAssetMenu(fileName = "New Turret", menuName = "TurretScriptable/BaseTurret")]
     public class TurretScriptable : ScriptableObject
     {
@@ -21,8 +25,13 @@ namespace NF.TD.BaseTurret
         public float maxRange = 30f;
 
         [Header("Gun Settings")]
+        [Range(1f, 100f)]
         public int maxBullets = 10;
+        [Range(1f, 20f)]
         public float fireRate = 20f;
+        [Range(1f, 40f)]
+        public float spreadScale = 5f;
+        [Range(1f, 10f)]
         public float reloadTime = 2f;
 
         [Header("Projectile Settings")]

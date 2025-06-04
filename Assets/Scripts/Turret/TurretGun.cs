@@ -2,6 +2,7 @@ using NF.TD.BaseTurret;
 using NF.TD.Bullet;
 using NF.TD.Turret;
 using NF.TD.TurretCore;
+using NF.TD.Interfaces;
 using UnityEngine;
 
 namespace NF.TD.Gun
@@ -12,6 +13,10 @@ namespace NF.TD.Gun
         public Transform target;
         [HideInInspector]
         public float maxSpreadDistance; // Will be taking the value of maxRange in Turret.cs
+        [HideInInspector]
+        public float fireRate;
+        [HideInInspector]
+        public float spreadScale; //Will take in the Value on TurretScriptable
 
         public TurretTower turret;
 
@@ -20,14 +25,10 @@ namespace NF.TD.Gun
         public GameObject shotPrefab;
         //Multiple Spawn Bullet Points, can be also be a single gun
         public Transform[] bulletSpawnPoint;
-        public float fireRate;
-
-        [Space(5)]
-        [Header("Spread")]
-        [Range(1f, 90f)]
-        public float maxSpreadAngle = 5f; // Maximum angle in degrees
 
         private TurretScriptable turretData;
+        private float lastSpreadScale;
+        private float lastFireRate;
 
         bool firing;
         float fireTimer;
@@ -40,6 +41,19 @@ namespace NF.TD.Gun
 
         void Update()
         {
+            //Continuously updates and for the Upgrade
+            if (turretData.spreadScale != lastSpreadScale)
+            {
+                spreadScale = turretData.spreadScale;
+                lastSpreadScale = spreadScale;
+            }
+
+            if (turretData.fireRate != lastFireRate)
+            {
+                fireRate = turretData.fireRate;
+                lastFireRate = fireRate;
+            }
+
             if (firing)
             {
                 while (fireTimer >= 1 / fireRate)
@@ -71,7 +85,7 @@ namespace NF.TD.Gun
             Vector3 forward = gunPoint.forward;
 
             float range = maxSpreadDistance;
-            float spreadRadius = Mathf.Tan(maxSpreadAngle * Mathf.Deg2Rad) * range;
+            float spreadRadius = Mathf.Tan(spreadScale * Mathf.Deg2Rad) * range;
             Vector2 randomOffset = Random.insideUnitCircle * spreadRadius;
             Vector3 spreadPoint = gunPoint.position + forward * range + gunPoint.up * randomOffset.y + gunPoint.right * randomOffset.x;
 
@@ -94,7 +108,6 @@ namespace NF.TD.Gun
             firing = true;
         }
 
-
         /*This is to check if the Enemy is also inside the
          firing spread of the turret, it is like the
          spray and pray mechanic*/
@@ -108,7 +121,7 @@ namespace NF.TD.Gun
                 float angle = Vector3.Angle(gunPoint.forward, directionToTarget);
 
                 // Ensure it's within the spread angle
-                if (angle <= maxSpreadAngle)
+                if (angle <= spreadScale)
                 {
                     return true;
                 }
@@ -121,9 +134,6 @@ namespace NF.TD.Gun
         {
             target = newTarget;
         }
-
-        /*TODO:
-        - Implement Max Bullet and Reload Time*/
     }
 
 }

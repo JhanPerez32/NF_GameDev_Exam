@@ -1,4 +1,4 @@
-namespace NF.TD.TurretCore
+namespace NF.TD.Interfaces
 {
     public interface ITargeting
     {

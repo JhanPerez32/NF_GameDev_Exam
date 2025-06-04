@@ -126,7 +126,7 @@ namespace NF.TD.TurretVisualRange
 
                     Vector3 forward = gunPoint.forward;
                     float range = gun.maxSpreadDistance;
-                    float angle = gun.maxSpreadAngle;
+                    float angle = gun.spreadScale;
 
                     // Draw center line
                     Handles.DrawLine(gunPoint.position, gunPoint.position + forward * range);

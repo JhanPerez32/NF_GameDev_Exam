@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 7138888863331856987}
   - component: {fileID: 6728009308077406553}
   - component: {fileID: 1308486344637780946}
+  - component: {fileID: 2520743346306922717}
   m_Layer: 0
   m_Name: Standard Turret
   m_TagString: Untagged
@@ -727,12 +728,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  lastMinRange: 0
+  lastMaxRange: 0
   turretData: {fileID: 11400000, guid: 681a9c946aecd8644a61de6e18d79ff6, type: 2}
   gun: {fileID: 1308486344637780946}
   turretJoints:
   - {fileID: 3552588519152245485}
   - {fileID: 8316255858759481408}
   enemyTag: Enemy
+  currentBullets: 0
+  reloading: 0
 --- !u!114 &1308486344637780946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,8 +757,20 @@ MonoBehaviour:
   bulletSpawnPoint:
   - {fileID: 2718478955082509098}
   - {fileID: 7500946212226421994}
-  fireRate: 20
-  maxSpreadAngle: 5
+  fireRate: 0
+  spreadScale: 0
+--- !u!114 &2520743346306922717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037947533491339323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4509ac487d70c43ac5542545a96c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6045252532050943342
 GameObject:
   m_ObjectHideFlags: 0
