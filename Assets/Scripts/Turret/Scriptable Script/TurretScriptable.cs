@@ -3,7 +3,7 @@ using UnityEngine;
 namespace NF.TD.BaseTurret
 {
     /// <summary>
-    /// General Setting for the Turret, for easy accesss on the Information to be dissplayed on the Shop
+    /// General Setting for the Turret, for easy accesss on the Information to be displayed on the Shop
     /// </summary>
 
     [CreateAssetMenu(fileName = "New Turret", menuName = "TurretScriptable/BaseTurret")]
