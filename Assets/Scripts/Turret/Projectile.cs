@@ -1,3 +1,5 @@
+using NF.TD.Enemy.Core;
+using NF.TD.Interfaces;
 using UniRx.Examples;
 using UnityEngine;
 
@@ -16,17 +18,13 @@ namespace NF.TD.Bullet
             // Attempt to get the Rigidbody component attached to this GameObject
             TryGetComponent(out rb);
         }
-        
-        //Destroy GameObject if didn't hit anything for set seconds
-        private void Update()
-        {
-            Destroy(gameObject, 2f);
-        }
 
         void Start()
         {
             // Calculate the velocity based on the object's forward direction and speed
             velocity = transform.forward * speed;
+
+            Destroy(gameObject, 2f);
         }
 
         void FixedUpdate()
@@ -40,18 +38,13 @@ namespace NF.TD.Bullet
         //For now this will be used for testing purposes
         void OnCollisionEnter(Collision other)
         {
-            /*GameObject hitEffect = Instantiate(hitPrefab, other.GetContact(0).point, Quaternion.identity);
-            Destroy(hitEffect, 1.5f);
-
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                enemy.TakeDamage(damageAmount);
-            }*/
+                damageable.TakeDamage(damageAmount);
+            }
 
             Destroy(gameObject);
-
-        //TODO: Create a Simple Enemy Health Script in order to properly test this
         }
 
         public void Initialize(float speed, int damage)

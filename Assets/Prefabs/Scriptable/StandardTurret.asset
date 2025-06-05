@@ -17,10 +17,10 @@ MonoBehaviour:
   turretCost: 0
   minRange: 5
   maxRange: 15
-  maxBullets: 50
-  fireRate: 10
+  maxBullets: 100
+  fireRate: 15
   spreadScale: 5
   reloadTime: 2
   projectileSpeed: 100
-  projectileDamage: 10
+  projectileDamage: 20
   explosionRadius: 5

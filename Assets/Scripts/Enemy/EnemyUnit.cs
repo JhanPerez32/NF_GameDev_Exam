@@ -1,4 +1,5 @@
 using NF.Main.Core.PlayerStateMachine;
+using NF.TD.Interfaces;
 using NF.TD.BaseEnemy;
 using NF.TD.EnemyPath;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace NF.TD.Enemy.Core
     /// <summary>
     /// Universal behavior for any enemy
     /// </summary>
-    public class EnemyUnit : MonoBehaviour
+    public class EnemyUnit : MonoBehaviour, IDamageable
     {
         public EnemyScriptable enemyScriptable;
 
@@ -55,6 +56,21 @@ namespace NF.TD.Enemy.Core
 
         //TODO: Add here a Loss Lives
         void EndPath()
+        {
+            Destroy(gameObject);
+        }
+
+        public void TakeDamage(int amount)
+        {
+            health -= amount;
+
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+
+        void Die()
         {
             Destroy(gameObject);
         }
