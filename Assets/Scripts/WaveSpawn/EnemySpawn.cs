@@ -1,5 +1,6 @@
 using NF.Main.Core.PlayerStateMachine;
 using NF.TD.BaseEnemy;
+using NF.TD.Interfaces;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,12 @@ namespace NF.TD.SpawnEnemy
         public TextMeshProUGUI waveCountdownText;
 
         private int waveIndex = 0;
+        private ISpawner spawner;
+
+        private void Awake()
+        {
+            spawner = new DefaultSpawner(); // Could be injected later
+        }
 
         private void Update()
         {
@@ -46,7 +53,7 @@ namespace NF.TD.SpawnEnemy
 
         void SpawnEnemy()
         {
-            Instantiate(enemyData.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            spawner.Spawn(enemyData, spawnPoint);
         }
     }
 }
