@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4749689867076980425}
   - component: {fileID: 3353179113523656999}
   - component: {fileID: 6512765471072248627}
-  - component: {fileID: 1290052757744181535}
+  - component: {fileID: 6427917538794229122}
   m_Layer: 0
   m_Name: Enemy Test
   m_TagString: Enemy
@@ -109,7 +109,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1290052757744181535
+--- !u!114 &6427917538794229122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3550672398161207577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf988f5e911196438814e6c3206b9cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 14da9ebfd5a799a40bf7f508f9738ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScriptable: {fileID: 11400000, guid: ffd726620cb361f478e89faead1bc7b8, type: 2}

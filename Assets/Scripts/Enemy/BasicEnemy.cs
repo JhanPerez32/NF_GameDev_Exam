@@ -1,16 +1,24 @@
+using NF.Main.Core.PlayerStateMachine;
+using NF.TD.Enemy.Core;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour
+namespace NF.TD.Enemy.BasicEnemy 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class BasicEnemy : EnemyUnit
     {
-        
-    }
+        public void TakeDamage(int amount)
+        {
+            health -= amount;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+
+        void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }

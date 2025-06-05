@@ -15,12 +15,12 @@ MonoBehaviour:
   turretModel: {fileID: 5037947533491339323, guid: 1b8e651a6f4885d419500dddda02d0ce, type: 3}
   turretIcon: {fileID: 0}
   turretCost: 0
-  minRange: 15
-  maxRange: 30
+  minRange: 5
+  maxRange: 15
   maxBullets: 50
   fireRate: 10
   spreadScale: 5
   reloadTime: 2
-  projectileSpeed: 20
+  projectileSpeed: 100
   projectileDamage: 10
   explosionRadius: 5

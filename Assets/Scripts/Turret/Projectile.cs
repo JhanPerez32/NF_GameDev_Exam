@@ -38,21 +38,21 @@ namespace NF.TD.Bullet
         }
 
         //For now this will be used for testing purposes
-        /*void OnCollisionEnter(Collision other)
+        void OnCollisionEnter(Collision other)
         {
-            GameObject hitEffect = Instantiate(hitPrefab, other.GetContact(0).point, Quaternion.identity);
+            /*GameObject hitEffect = Instantiate(hitPrefab, other.GetContact(0).point, Quaternion.identity);
             Destroy(hitEffect, 1.5f);
 
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damageAmount);
-            }
+            }*/
 
             Destroy(gameObject);
 
         //TODO: Create a Simple Enemy Health Script in order to properly test this
-        }*/
+        }
 
         public void Initialize(float speed, int damage)
         {

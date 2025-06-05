@@ -12,14 +12,22 @@ namespace NF.TD.Enemy.Core
     {
         public EnemyScriptable enemyScriptable;
 
+        [Tooltip("Keep it 0 since it will take in the Value on the" +
+            "its Scriptable GameObject, kindly edit there")]
+        public int health;
         private Transform target;
         private int wavepointIndex = 0;
 
         private void Start()
         {
+            //Will start at the very first Waypoint gameobject
             target = Waypoints.points[0];
+
+            health = enemyScriptable.health;
         }
 
+        //Moves the enemy toward the current target waypoint.
+        //Once the enemy is within 0.4 units of the target, it proceeds to the next waypoint.
         private void Update()
         {
             Vector3 dir = target.position - transform.position;
@@ -31,6 +39,7 @@ namespace NF.TD.Enemy.Core
             }
         }
 
+        //The Arrangements of the Waypoints or Pathway of the enemy is in-order
         void GetNextWaypoint()
         {
             if (wavepointIndex >= Waypoints.points.Length - 1)
@@ -39,10 +48,12 @@ namespace NF.TD.Enemy.Core
                 return;
             }
 
+            //How many the waypoints is until it reaches the last one
             wavepointIndex++;
             target = Waypoints.points[wavepointIndex];
         }
 
+        //TODO: Add here a Loss Lives
         void EndPath()
         {
             Destroy(gameObject);
