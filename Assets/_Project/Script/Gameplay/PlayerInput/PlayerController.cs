@@ -48,8 +48,8 @@ namespace NF.Main.Gameplay.PlayerInput
         public override void OnSubscriptionSet()
         {
             base.OnSubscriptionSet();
-            AddEvent(_playerInput.Attack, _ => OnAttack());
-            AddEvent(_playerInput.Movement, OnPlayerMove);
+            //AddEvent(_playerInput.Attack, _ => OnAttack());
+            //AddEvent(_playerInput.Movement, OnPlayerMove);
         }
 
 
