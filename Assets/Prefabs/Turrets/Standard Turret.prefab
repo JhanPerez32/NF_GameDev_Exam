@@ -283,8 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82de3535f62f96040865c499e0e386af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 15
-  maxRange: 30
+  minRange: 5
+  maxRange: 15
   angleLimit: 90
   aimTolerance: 1
   turnSpeed: 90
@@ -641,8 +641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82de3535f62f96040865c499e0e386af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 15
-  maxRange: 30
+  minRange: 5
+  maxRange: 15
   angleLimit: 360
   aimTolerance: 1
   turnSpeed: 90
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  maxSpreadDistance: 30
+  maxSpreadDistance: 15
   fireRate: 0
   spreadScale: 0
   turret: {fileID: 6728009308077406553}
@@ -878,11 +878,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3111393878199197506, guid: 56c300fb80000234893296123b570e68, type: 3}
       propertyPath: m_LocalScale.x
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3111393878199197506, guid: 56c300fb80000234893296123b570e68, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3111393878199197506, guid: 56c300fb80000234893296123b570e68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,6 +959,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5900824463586189597}
     m_Modifications:
+    - target: {fileID: 3111393878199197506, guid: c8b656d825d069144a85470a73db23f4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111393878199197506, guid: c8b656d825d069144a85470a73db23f4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3111393878199197506, guid: c8b656d825d069144a85470a73db23f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

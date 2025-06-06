@@ -1,10 +1,8 @@
-using NF.Main.Core.PlayerStateMachine;
-using NF.TD.TurretVisualRange;
-using UnityEngine;
+using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
 using NF.TD.Turret;
-using NF.TD.BaseTurret;
-using NF.TD.TurretCore;
+using NF.TD.TurretVisualRange;
+using UnityEngine;
 
 namespace NF.TD.BuildCore 
 {
@@ -77,6 +75,39 @@ namespace NF.TD.BuildCore
                     newVisualizer.SetVisualizerVisible(true);
                 }
             }
+        }
+
+        public void SelectTurretToBuild(TurretScriptable turret)
+        {
+            //Hide any previously selected turret’s visualizer
+            if (selectedNode != null && selectedNode.turret != null)
+            {
+                TurretRangeVisualizer visualizer = selectedNode.turret.GetComponentInChildren<TurretRangeVisualizer>();
+                if (visualizer != null)
+                {
+                    visualizer.SetVisualizerVisible(false);
+                }
+            }
+
+            turretToBuild = turret;
+            selectedNode = null;
+
+        }
+
+        public void DeselectTurret()
+        {
+            //Hide visualizer
+            if (selectedNode != null && selectedNode.turret != null)
+            {
+                TurretRangeVisualizer visualizer = selectedNode.turret.GetComponentInChildren<TurretRangeVisualizer>();
+                if (visualizer != null)
+                {
+                    visualizer.SetVisualizerVisible(false);
+                }
+            }
+
+            turretToBuild = null;
+            selectedNode = null;
         }
     }
 }

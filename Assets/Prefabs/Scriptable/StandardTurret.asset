@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StandardTurret
   m_EditorClassIdentifier: 
   turretModel: {fileID: 5037947533491339323, guid: 1b8e651a6f4885d419500dddda02d0ce, type: 3}
-  turretIcon: {fileID: 0}
-  turretCost: 0
+  turretIcon: {fileID: 21300000, guid: f0dd095a77a291048b7615f584e8402f, type: 3}
+  turretCost: 25
   minRange: 5
   maxRange: 15
   maxBullets: 100
