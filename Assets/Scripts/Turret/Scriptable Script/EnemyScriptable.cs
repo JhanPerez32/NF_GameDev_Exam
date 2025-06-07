@@ -18,8 +18,8 @@ namespace NF.TD.BaseEnemy
         [Header("Max Health")]
         public int health = 100;
 
-        //[Header("Reward")]
-        //public int value = 25;
+        [Header("Reward")]
+        public int rewardValue = 25;
 
 
     }

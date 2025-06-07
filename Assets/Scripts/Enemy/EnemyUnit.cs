@@ -1,8 +1,8 @@
-using NF.Main.Core.PlayerStateMachine;
 using NF.TD.Interfaces;
 using NF.TD.BaseEnemy;
 using NF.TD.EnemyPath;
 using UnityEngine;
+using NF.TD.Extensions;
 
 namespace NF.TD.Enemy.Core
 {
@@ -15,7 +15,8 @@ namespace NF.TD.Enemy.Core
 
         [Tooltip("Keep it 0 since it will take in the Value on the" +
             "its Scriptable GameObject, kindly edit there")]
-        public int health;
+        private int health;
+        private int rewardValue;
         private Transform target;
         private int wavepointIndex = 0;
 
@@ -25,6 +26,7 @@ namespace NF.TD.Enemy.Core
             target = Waypoints.points[0];
 
             health = enemyScriptable.health;
+            rewardValue = enemyScriptable.rewardValue;
         }
 
         //Moves the enemy toward the current target waypoint.
@@ -72,6 +74,7 @@ namespace NF.TD.Enemy.Core
 
         void Die()
         {
+            PlayerStatsExtension.AddMoney(rewardValue);
             Destroy(gameObject);
         }
     }

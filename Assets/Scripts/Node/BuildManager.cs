@@ -3,6 +3,7 @@ using NF.TD.BuildArea;
 using NF.TD.PlayerCore;
 using NF.TD.Turret;
 using NF.TD.TurretVisualRange;
+using NF.TD.Extensions;
 using UnityEngine;
 
 namespace NF.TD.BuildCore 
@@ -35,13 +36,14 @@ namespace NF.TD.BuildCore
         /// </summary>
         public void BuildTurretOn(Node node)
         {
-            if (PlayerStats.Money < turretToBuild.turretCost)
+            // Check if the player has enough money and deduct the cost using the SpendMoney helper method.
+            // SpendMoney returns true if the player had enough money and the amount was deducted.
+            // This centralizes money-handling logic, preventing duplicated checks and increasing maintainability.
+            if (!PlayerStatsExtension.SpendMoney(turretToBuild.turretCost))
             {
                 Debug.Log("Not Enough Money");
-                return;
+                return;  // Exit if the player can't afford the turret.
             }
-
-            PlayerStats.Money -= turretToBuild.turretCost;
 
             GameObject turret = Instantiate(turretToBuild.turretModel, node.GetBuildPosition(), Quaternion.identity);
             node.turret = turret;

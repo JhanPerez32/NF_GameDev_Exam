@@ -52,7 +52,7 @@ namespace NF.TD.BuildArea
             }
             else
             {
-                rend.material.color = hoverColorBuildable;
+                rend.material.color = buildManager.HasMoney ? hoverColorBuildable : hoverColorBlocked;
             }
         }
 
@@ -87,6 +87,11 @@ namespace NF.TD.BuildArea
             if (turret != null)
             {
                 rend.material.color = hoverColorBlocked;
+            }
+            else
+            {
+                // Green if has money, red if not
+                rend.material.color = buildManager.HasMoney ? hoverColorBuildable : hoverColorBlocked;
             }
 
             isHovered = true;
