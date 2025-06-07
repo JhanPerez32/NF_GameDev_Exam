@@ -32,7 +32,7 @@ namespace NF.TD.Extensions
 
         public static void UpdatePlayerLives(int amount) 
         {
-            PlayerStats.Lives += amount;
+            PlayerStats.Lives -= amount;
         }
     }
 }

@@ -14,14 +14,6 @@ namespace NF.TD.UICore
         [SerializeField] private TextMeshProUGUI waveCountdownText;
         [SerializeField] private TextMeshProUGUI liveText;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                PlayerStatsExtension.UpdatePlayerLives(-1);
-            }
-        }
-
         private void Awake()
         {
             if (Instance != null && Instance != this)

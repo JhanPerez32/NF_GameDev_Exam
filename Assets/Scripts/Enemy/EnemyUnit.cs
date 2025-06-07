@@ -61,7 +61,7 @@ namespace NF.TD.Enemy.Core
         //TODO: Add here a Loss Lives
         void EndPath()
         {
-            PlayerStatsExtension.UpdatePlayerLives(-DMGToBase);
+            PlayerStatsExtension.UpdatePlayerLives(DMGToBase);
             Destroy(gameObject);
         }
 
