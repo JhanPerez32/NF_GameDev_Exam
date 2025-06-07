@@ -2307,7 +2307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0b7adf41cbba94ca0827219ab215b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretToBuild: {fileID: 11400000, guid: 681a9c946aecd8644a61de6e18d79ff6, type: 2}
 --- !u!1 &958296680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,7 +4695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1698688966
 Transform:
   m_ObjectHideFlags: 0

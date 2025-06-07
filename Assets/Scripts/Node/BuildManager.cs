@@ -20,7 +20,7 @@ namespace NF.TD.BuildCore
             instance = this;
         }
 
-        public TurretScriptable turretToBuild;
+        private TurretScriptable turretToBuild;
         private Node selectedNode;
 
         public bool CanBuild { get { return turretToBuild != null; } }
@@ -64,7 +64,7 @@ namespace NF.TD.BuildCore
             }
 
             selectedNode = node;
-            //turretToBuild = null;
+            turretToBuild = null;
 
             //Show selected turret's visualizer
             if (selectedNode != null && selectedNode.turret != null)
