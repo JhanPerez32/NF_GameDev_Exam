@@ -1,5 +1,7 @@
+using NF.TD.Extensions;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace NF.TD.UICore
 {
@@ -10,6 +12,15 @@ namespace NF.TD.UICore
         [Header("UI References")]
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private TextMeshProUGUI waveCountdownText;
+        [SerializeField] private TextMeshProUGUI liveText;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PlayerStatsExtension.UpdatePlayerLives(-1);
+            }
+        }
 
         private void Awake()
         {
@@ -31,6 +42,12 @@ namespace NF.TD.UICore
         {
             if (waveCountdownText != null)
                 waveCountdownText.text = countdown.ToString("00.00");
+        }
+
+        public void UpdateLivesUI(int amount)
+        {
+            if (liveText != null)
+                liveText.text = amount.ToString();
         }
     }
 }

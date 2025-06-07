@@ -1,4 +1,5 @@
 using NF.TD.PlayerCore;
+using UnityEngine;
 
 namespace NF.TD.Extensions 
 {
@@ -27,6 +28,11 @@ namespace NF.TD.Extensions
             }
 
             return false;
+        }
+
+        public static void UpdatePlayerLives(int amount) 
+        {
+            PlayerStats.Lives += amount;
         }
     }
 }

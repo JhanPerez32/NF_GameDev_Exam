@@ -21,6 +21,9 @@ namespace NF.TD.BaseEnemy
         [Header("Reward")]
         public int rewardValue = 25;
 
+        [Header("Damage to Base")]
+        public int DMGToBase = 1;
+
 
     }
 }

@@ -17,6 +17,7 @@ namespace NF.TD.Enemy.Core
             "its Scriptable GameObject, kindly edit there")]
         private int health;
         private int rewardValue;
+        private int DMGToBase;
         private Transform target;
         private int wavepointIndex = 0;
 
@@ -27,6 +28,7 @@ namespace NF.TD.Enemy.Core
 
             health = enemyScriptable.health;
             rewardValue = enemyScriptable.rewardValue;
+            DMGToBase = enemyScriptable.DMGToBase;
         }
 
         //Moves the enemy toward the current target waypoint.
@@ -59,6 +61,7 @@ namespace NF.TD.Enemy.Core
         //TODO: Add here a Loss Lives
         void EndPath()
         {
+            PlayerStatsExtension.UpdatePlayerLives(-DMGToBase);
             Destroy(gameObject);
         }
 
