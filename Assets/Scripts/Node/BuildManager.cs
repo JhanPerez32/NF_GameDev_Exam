@@ -1,5 +1,6 @@
 using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
+using NF.TD.PlayerCore;
 using NF.TD.Turret;
 using NF.TD.TurretVisualRange;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace NF.TD.BuildCore
         private Node selectedNode;
 
         public bool CanBuild { get { return turretToBuild != null; } }
+        public bool HasMoney { get { return turretToBuild != null && PlayerStats.Money >= turretToBuild.turretCost; } }
 
         /// <summary>
         /// Instantiates and places the selected turret on the specified node.
@@ -33,6 +35,14 @@ namespace NF.TD.BuildCore
         /// </summary>
         public void BuildTurretOn(Node node)
         {
+            if (PlayerStats.Money < turretToBuild.turretCost)
+            {
+                Debug.Log("Not Enough Money");
+                return;
+            }
+
+            PlayerStats.Money -= turretToBuild.turretCost;
+
             GameObject turret = Instantiate(turretToBuild.turretModel, node.GetBuildPosition(), Quaternion.identity);
             node.turret = turret;
 
@@ -41,6 +51,8 @@ namespace NF.TD.BuildCore
             {
                 turretScript.turretData = turretToBuild;
             }
+
+            Debug.Log("Turret Build, Money Left " + PlayerStats.Money);
         }
 
         /// <summary>

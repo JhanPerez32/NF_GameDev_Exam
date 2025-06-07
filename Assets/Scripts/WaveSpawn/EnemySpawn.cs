@@ -1,6 +1,7 @@
 using NF.Main.Core.PlayerStateMachine;
 using NF.TD.BaseEnemy;
 using NF.TD.Interfaces;
+using NF.TD.UICore;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -15,8 +16,6 @@ namespace NF.TD.SpawnEnemy
 
         public float timeBetweenWaves;
         private float countdown = 5f;
-
-        public TextMeshProUGUI waveCountdownText;
 
         private int waveIndex = 0;
         private ISpawner spawner;
@@ -37,7 +36,7 @@ namespace NF.TD.SpawnEnemy
             countdown -= Time.deltaTime;
             countdown = Mathf.Max(0f, countdown);
 
-            waveCountdownText.text = countdown.ToString("00.00");
+            UIManager.Instance?.UpdateWaveCountdown(countdown);
         }
 
         IEnumerator SpawnWave()
