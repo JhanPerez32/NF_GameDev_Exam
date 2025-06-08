@@ -1,6 +1,7 @@
 using NF.Main.Core.PlayerStateMachine;
 using NF.TD.BaseEnemy;
 using NF.TD.Interfaces;
+using NF.TD.PlayerCore;
 using NF.TD.UICore;
 using System.Collections;
 using TMPro;
@@ -43,11 +44,15 @@ namespace NF.TD.SpawnEnemy
         {
             waveIndex++;
 
+            UIManager.Instance?.UpdateWaveNumberUI(waveIndex);
+
             for (int i = 0; i < waveIndex; i++)
             {
                 SpawnEnemy();
                 yield return new WaitForSeconds(0.5f);
             }
+
+            PlayerStats.Rounds = waveIndex;
         }
 
         void SpawnEnemy()
