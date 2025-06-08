@@ -39,6 +39,9 @@ namespace NF.TD.BaseTurret
         public int projectileDamage = 10;
         public float explosionRadius = 5;
 
+        [Header("Turret Level")]
+        public int turretLevel = 1;
+
         //Dynamic Naming for the Scriptable Game Object.
         //It will take in the Name of the Scriptable GameObject it self.
         public string TurretName => name; //For Turret Shops, this line will be responsible for naming.

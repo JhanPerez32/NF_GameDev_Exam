@@ -1,4 +1,5 @@
 using NF.Main.Gameplay;
+using NF.TD.BuildArea;
 using NF.TD.Extensions;
 using NF.TD.PlayerCore;
 using TMPro;
@@ -24,6 +25,10 @@ namespace NF.TD.UICore
 
         [Header("Pause Screen")]
         [SerializeField] private GameObject pauseScreen;
+
+        [Header("Upgrade Shop")]
+        [SerializeField] private UpgradeShopUI upgradeShopScript;
+        [SerializeField] private GameObject upgradeShopUI;
 
         private void Awake()
         {
@@ -98,6 +103,15 @@ namespace NF.TD.UICore
             if (pauseScreen != null)
             {
                 pauseScreen.SetActive(false);
+            }
+        }
+
+        public void ShowUpgradeShop(Node node)
+        {
+            if(upgradeShopScript != null)
+            {
+                upgradeShopScript.SetTarget(node);
+                upgradeShopUI.SetActive(true);
             }
         }
     }

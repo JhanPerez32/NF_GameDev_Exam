@@ -5,6 +5,7 @@ using NF.TD.Turret;
 using NF.TD.TurretVisualRange;
 using NF.TD.Extensions;
 using UnityEngine;
+using NF.TD.UICore;
 
 namespace NF.TD.BuildCore 
 {
@@ -89,6 +90,8 @@ namespace NF.TD.BuildCore
                     newVisualizer.SetVisualizerVisible(true);
                 }
             }
+
+            UIManager.Instance.ShowUpgradeShop(node);
         }
 
         public void SelectTurretToBuild(TurretScriptable turret)
