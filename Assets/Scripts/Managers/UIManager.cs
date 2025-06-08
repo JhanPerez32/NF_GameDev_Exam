@@ -13,6 +13,7 @@ namespace NF.TD.UICore
         [SerializeField] private TextMeshProUGUI moneyText;
         [SerializeField] private TextMeshProUGUI waveCountdownText;
         [SerializeField] private TextMeshProUGUI liveText;
+        [SerializeField] private GameObject gameOverScreen;
 
         private void Awake()
         {
@@ -40,6 +41,18 @@ namespace NF.TD.UICore
         {
             if (liveText != null)
                 liveText.text = amount.ToString();
+        }
+
+        public void ShowGameOverUI()
+        {
+            if (gameOverScreen != null)
+                gameOverScreen.SetActive(true);
+        }
+
+        public void HideGameOverUI()
+        {
+            if (gameOverScreen != null)
+                gameOverScreen.SetActive(false);
         }
     }
 }

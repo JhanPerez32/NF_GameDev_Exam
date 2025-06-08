@@ -1,5 +1,7 @@
 using NF.Main.Core;
 using NF.Main.Core.GameStateMachine;
+using NF.TD.PlayerCore;
+using NF.TD.UICore;
 
 namespace NF.Main.Gameplay
 {
@@ -17,6 +19,11 @@ namespace NF.Main.Gameplay
         private void Update()
         {
             _stateMachine.Update();
+
+            if (PlayerStats.Lives <= 0) 
+            {
+                EndGame();
+            }
         }
 
         public override void Initialize(object data = null)
@@ -49,5 +56,13 @@ namespace NF.Main.Gameplay
 
         private void At(IState from, IState to, IPredicate condition) => _stateMachine.AddTransition(from, to, condition);
         private void Any(IState to, IPredicate condition) => _stateMachine.AddAnyTransition(to, condition);
+
+        void EndGame()
+        {
+            if (GameState != GameState.GameOver)
+            {
+                GameState = GameState.GameOver;
+            }
+        }
     }
 }

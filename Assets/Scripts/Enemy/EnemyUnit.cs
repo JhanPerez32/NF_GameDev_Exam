@@ -58,7 +58,6 @@ namespace NF.TD.Enemy.Core
             target = Waypoints.points[wavepointIndex];
         }
 
-        //TODO: Add here a Loss Lives
         void EndPath()
         {
             PlayerStatsExtension.UpdatePlayerLives(DMGToBase);

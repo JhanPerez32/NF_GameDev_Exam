@@ -1046,6 +1046,7 @@ MonoBehaviour:
   moneyText: {fileID: 257279601}
   waveCountdownText: {fileID: 737693496}
   liveText: {fileID: 1795128662}
+  gameOverScreen: {fileID: 317726314}
 --- !u!1001 &317192998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1600,7 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingMoney: 500
-  startingLives: 5
+  startingLives: 1
 --- !u!1 &404275522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7547974661896872351, guid: ef2e71020bb687149856df775c5aeea3, type: 3}
