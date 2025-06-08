@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Turret Test.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_Project/Scenes/NF_MainMenu.unity
+    guid: 27a22ca6a78a5f24ba9be244aeb60b32
+  - enabled: 1
+    path: Assets/_Project/Scenes/NF_GameDev_Exam.unity
+    guid: 21a1e388a8edc43c5bb65e5262aef3e9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
