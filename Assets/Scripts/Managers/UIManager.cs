@@ -1,3 +1,4 @@
+using NF.Main.Gameplay;
 using NF.TD.Extensions;
 using NF.TD.PlayerCore;
 using TMPro;
@@ -20,6 +21,9 @@ namespace NF.TD.UICore
         [Header("Game Over Screen")]
         [SerializeField] private GameObject gameOverScreen;
         [SerializeField] private TextMeshProUGUI waveSurvived;
+
+        [Header("Pause Screen")]
+        [SerializeField] private GameObject pauseScreen;
 
         private void Awake()
         {
@@ -78,6 +82,22 @@ namespace NF.TD.UICore
             if (gameOverScreen != null)
             {
                 gameOverScreen.SetActive(false);
+            }
+        }
+
+        public void ShowPauseScreen()
+        {
+            if (pauseScreen != null)
+            {
+                pauseScreen.SetActive(true);
+            }
+        }
+
+        public void HidePauseScreen()
+        {
+            if (pauseScreen != null)
+            {
+                pauseScreen.SetActive(false);
             }
         }
     }

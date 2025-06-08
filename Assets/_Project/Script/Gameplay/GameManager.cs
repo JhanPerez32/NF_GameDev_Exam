@@ -1,7 +1,8 @@
 using NF.Main.Core;
 using NF.Main.Core.GameStateMachine;
 using NF.TD.PlayerCore;
-using NF.TD.UICore;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NF.Main.Gameplay
 {
@@ -23,6 +24,18 @@ namespace NF.Main.Gameplay
             if (PlayerStats.Lives <= 0) 
             {
                 EndGame();
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (GameState == GameState.Playing)
+                {
+                    PauseGame();
+                }
+                else if (GameState == GameState.Paused)
+                {
+                    ResumeGame();
+                }
             }
         }
 
@@ -62,6 +75,23 @@ namespace NF.Main.Gameplay
             if (GameState != GameState.GameOver)
             {
                 GameState = GameState.GameOver;
+            }
+        }
+
+        void PauseGame()
+        {
+            if(GameState != GameState.Paused)
+            {
+                GameState = GameState.Paused;
+            }
+        }
+
+        // Made public so that it can be also accessed by the Resume/Continue Button in Pause UI
+        public void ResumeGame()
+        {
+            if (GameState != GameState.Playing)
+            {
+                GameState = GameState.Playing;
             }
         }
     }

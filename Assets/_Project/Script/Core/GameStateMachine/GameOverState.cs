@@ -25,7 +25,7 @@ namespace NF.Main.Core.GameStateMachine
         {
             base.OnExit();
 
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
 
             // Optional: Hide UI if leaving GameOver state for any reason
             UIManager.Instance.HideGameOverUI();
