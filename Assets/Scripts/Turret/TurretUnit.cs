@@ -1,4 +1,4 @@
-using NF.TD.BaseTurret;
+﻿using NF.TD.BaseTurret;
 using NF.TD.Gun;
 using NF.TD.Joints;
 using UnityEngine;
@@ -16,6 +16,7 @@ namespace NF.TD.TurretCore
         public float lastMinRange, lastMaxRange;
 
         public TurretScriptable turretData;
+        public int totalSpentCost = 0;
 
         [Tooltip("Attach TurretGun")]
         public TurretGun gun;
@@ -53,6 +54,11 @@ namespace NF.TD.TurretCore
 
         private void Start()
         {
+            if (turretData != null)
+            {
+                totalSpentCost = turretData.turretCost;
+            }
+
             currentBullets = turretData.maxBullets;
             InvokeRepeating("UpdateTarget", 0f, 0.5f);
         }
@@ -87,6 +93,33 @@ namespace NF.TD.TurretCore
                 target = null;
             }
         }
+
+        /// <summary>
+        /// Calculates the turret's selling price based on total spent cost.
+        ///
+        /// Formula:
+        /// Sell Price = TotalSpentCost * 0.5
+        ///
+        /// TotalSpentCost includes:
+        /// - The initial cost to build the turret
+        /// - All costs accumulated from upgrades
+        ///
+        /// Example:
+        /// If base cost = 250
+        /// Upgrade 1 cost = 125 (250 * 0.5 * level 1)
+        /// Upgrade 2 cost = 250 (250 * 0.5 * level 2)
+        /// TotalSpentCost = 250 + 125 + 250 = 625
+        ///
+        /// Sell Price = 625 * 0.5 = 312 (rounded)
+        ///
+        /// This ensures players are partially refunded for both building and upgrading,
+        /// encouraging smart investment and upgrades.
+        /// </summary>
+        public int GetSellPrice()
+        {
+            return Mathf.RoundToInt(totalSpentCost * 0.5f);
+        }
+
     }
 }
 

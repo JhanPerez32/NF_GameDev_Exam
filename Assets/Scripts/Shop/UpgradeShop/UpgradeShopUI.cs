@@ -1,65 +1,93 @@
 using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
+using NF.TD.BuildCore;
+using NF.TD.Extensions;
 using NF.TD.Turret;
 using NF.TD.Upgrade;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeShopUI : MonoBehaviour
+namespace NF.TD.Upgrade
 {
-    public Image turretIcon;
-    public TMP_Text turretNameText;
-    public TMP_Text turretLevelText;
-    public TMP_Text turretMinRange;
-    public TMP_Text turretMaxRange;
-    public TMP_Text maxAmmo;
-    public TMP_Text reloadTime;
-
-    [Header("UpgradeButton")]
-    public Button upgradeButton;
-    public TMP_Text upgradeButtonText;
-
-    private Node target;
-
-    public void SetTarget(Node _target)
+    public class UpgradeShopUI : MonoBehaviour
     {
-        target = _target;
+        public Image turretIcon;
+        public TMP_Text turretNameText;
+        public TMP_Text turretLevelText;
+        public TMP_Text turretMinRange;
+        public TMP_Text turretMaxRange;
+        public TMP_Text maxAmmo;
+        public TMP_Text reloadTime;
 
-        transform.position = target.GetBuildPosition();
+        [Header("UpgradeButton")]
+        public Button upgradeButton;
+        public TMP_Text upgradeButtonText;
 
-        TurretTower turretComponent = target.turret.GetComponent<TurretTower>();
-        if (turretComponent != null && turretComponent.turretData != null)
+        [Header("SellButton")]
+        public Button sellButton;
+        public TMP_Text sellButtonText;
+
+        private Node target;
+
+        public void SetTarget(Node _target)
         {
-            TurretScriptable data = turretComponent.turretData;
+            target = _target;
 
-            turretIcon.sprite = data.turretIcon;
-            turretNameText.text = data.TurretName;
-            turretLevelText.text = $"Lvl: {data.turretLevel}";
-            turretMinRange.text = $"Min Range: {data.minRange}";
-            turretMaxRange.text = $"Max Range: {data.maxRange}";
-            maxAmmo.text = $"Ammo: {data.maxBullets}";
-            reloadTime.text = $"Reload: {data.reloadTime}s";
+            transform.position = target.GetBuildPosition();
 
-            // Calculate and update the button text
-            int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
-            upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
+            TurretTower turretComponent = target.turret.GetComponent<TurretTower>();
+            if (turretComponent != null && turretComponent.turretData != null)
+            {
+                TurretScriptable data = turretComponent.turretData;
+
+                turretIcon.sprite = data.turretIcon;
+                turretNameText.text = data.TurretName;
+                turretLevelText.text = $"Lvl: {data.turretLevel}";
+                turretMinRange.text = $"Min Range: {data.minRange}";
+                turretMaxRange.text = $"Max Range: {data.maxRange}";
+                maxAmmo.text = $"Ammo: {data.maxBullets}";
+                reloadTime.text = $"Reload: {data.reloadTime}s";
+
+                // Calculate and update the button text
+                int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
+                upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
+
+                // Show sell price on the Button
+                int sellPrice = turretComponent.GetSellPrice();
+                sellButtonText.text = $"Sell \"{sellPrice}\"";
+            }
+            else
+            {
+                turretNameText.text = "No Turret";
+                turretLevelText.text = "0";
+                turretMinRange.text = "???";
+                turretMaxRange.text = "???";
+                maxAmmo.text = "???";
+                reloadTime.text = "???";
+                upgradeButtonText.text = "Upgrade \"???\"";
+            }
+
+            Upgrading();
+            Selling();
         }
-        else
+
+        void Upgrading()
         {
-            turretNameText.text = "No Turret";
-            turretLevelText.text = "0";
-            turretMinRange.text = "???";
-            turretMaxRange.text = "???";
-            maxAmmo.text = "???";
-            reloadTime.text = "???";
-            upgradeButtonText.text = "Upgrade \"???\"";
+            upgradeButton.onClick.RemoveAllListeners();
+            upgradeButton.onClick.AddListener(() =>
+            {
+                TurretUpgradeManager.Instance.UpgradeTurret(target);
+            });
         }
 
-        upgradeButton.onClick.RemoveAllListeners(); // Clear previous listeners
-        upgradeButton.onClick.AddListener(() =>
+        void Selling()
         {
-            TurretUpgradeManager.Instance.UpgradeTurret(target);
-        });
+            sellButton.onClick.RemoveAllListeners();
+            sellButton.onClick.AddListener(() =>
+            {
+                TurretUpgradeManager.Instance.SellTurret(target);
+            });
+        }
     }
 }

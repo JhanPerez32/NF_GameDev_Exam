@@ -1,10 +1,12 @@
 using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
+using NF.TD.BuildCore;
 using NF.TD.Extensions;
 using NF.TD.PlayerCore;
 using NF.TD.Turret;
 using NF.TD.UICore;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace NF.TD.Upgrade 
 {
@@ -39,12 +41,37 @@ namespace NF.TD.Upgrade
                 return;
             }
 
+            // Track total spent cost
+            turretComponent.totalSpentCost += upgradeCost;
+
+            // Upgrade turret Level
             turretData.turretLevel++;
 
             Debug.Log($"Turret upgraded to Level {turretData.turretLevel}. Money left: {PlayerStats.Money}");
 
             // Refreshes the UpgradeShopUI to show the new values
             UIManager.Instance.ShowUpgradeShop(node);
+        }
+
+        public void SellTurret(Node node)
+        {
+            if (node == null || node.turret == null) return;
+
+            TurretTower turretComponent = node.turret.GetComponent<TurretTower>();
+            if (turretComponent == null) return;
+
+            // The selling price is calculated as 50% of the turret's TotalSpentCost,
+            // which includes both the initial build cost and all upgrade costs.
+            // This approach rewards strategic investments and fairly compensates the player.
+            int sellPrice = turretComponent.GetSellPrice();
+            PlayerStatsExtension.AddMoney(sellPrice);
+
+            Destroy(node.turret);
+            node.turret = null;
+
+            BuildManager.instance.DeselectTurret();
+
+            Debug.Log($"Turret sold for {sellPrice}");
         }
     }
 }

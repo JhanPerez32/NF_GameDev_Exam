@@ -1,10 +1,8 @@
-using NF.Main.Gameplay;
 using NF.TD.BuildArea;
-using NF.TD.Extensions;
 using NF.TD.PlayerCore;
+using NF.TD.Upgrade;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace NF.TD.UICore
 {
