@@ -1348,6 +1348,8 @@ MonoBehaviour:
   turretMaxRange: {fileID: 1224717296}
   maxAmmo: {fileID: 2022035652}
   reloadTime: {fileID: 333993196}
+  upgradeButton: {fileID: 2021816538}
+  upgradeButtonText: {fileID: 1485095509}
 --- !u!1 &316025115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4346,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8333766747763348230, guid: 3ca8655c188b1854b909180372b7cbf7, type: 3}
   m_PrefabInstance: {fileID: 893840912}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &895572090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 895572091}
+  - component: {fileID: 895572092}
+  m_Layer: 0
+  m_Name: MANAGER_UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &895572091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895572090}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2016468291}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &895572092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895572090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22d638138160fa4dba9d910f1749ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &909349316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6866,7 +6912,7 @@ GameObject:
   - component: {fileID: 1485095510}
   - component: {fileID: 1485095509}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Upgrade Button TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7907,7 +7953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1698688966
 Transform:
   m_ObjectHideFlags: 0
@@ -9987,6 +10033,7 @@ Transform:
   - {fileID: 1918027005}
   - {fileID: 1698688966}
   - {fileID: 939682050}
+  - {fileID: 895572091}
   - {fileID: 388706357}
   - {fileID: 270687008}
   - {fileID: 1842204778}
@@ -10074,7 +10121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2021816539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2021816539
 MonoBehaviour:
   m_ObjectHideFlags: 0

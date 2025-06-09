@@ -108,19 +108,13 @@ namespace NF.TD.UICore
 
         public void ShowUpgradeShop(Node node)
         {
-            if(upgradeShopScript != null)
-            {
-                upgradeShopScript.SetTarget(node);
-                upgradeShopUI.SetActive(true);
-            }
+            upgradeShopUI.gameObject.SetActive(true);
+            upgradeShopScript.SetTarget(node);
         }
 
         public void HideUpgradeShop()
         {
-            if(upgradeShopUI != null)
-            {
-                upgradeShopUI.SetActive(false);
-            }
+            upgradeShopUI.gameObject.SetActive(false);
         }
     }
 }

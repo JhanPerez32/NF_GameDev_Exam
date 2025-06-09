@@ -12,6 +12,9 @@ namespace NF.TD.BaseTurret
     {
         [Header("Turret")]
 
+        [Header("Turret Level")]
+        public int turretLevel = 1;
+
         [Tooltip("Base Model of the Turret")]
         public GameObject turretModel;
 
@@ -38,13 +41,17 @@ namespace NF.TD.BaseTurret
         [Header("Projectile Settings")]
         public float projectileSpeed = 20f;
         public int projectileDamage = 10;
-        public float explosionRadius = 5;
-
-        [Header("Turret Level")]
-        public int turretLevel = 1;
+        //public float explosionRadius = 5;
 
         //Dynamic Naming for the Scriptable Game Object.
         //It will take in the Name of the Scriptable GameObject it self.
         public string TurretName => name; //For Turret Shops, this line will be responsible for naming.
+
+        public TurretScriptable Clone()
+        {
+            TurretScriptable copy = Instantiate(this);
+            copy.name = this.name; //Removes "(Clone)" from the name
+            return copy;
+        }
     }
 }

@@ -1,6 +1,7 @@
 using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
 using NF.TD.Turret;
+using NF.TD.Upgrade;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,10 @@ public class UpgradeShopUI : MonoBehaviour
     public TMP_Text turretMaxRange;
     public TMP_Text maxAmmo;
     public TMP_Text reloadTime;
+
+    [Header("UpgradeButton")]
+    public Button upgradeButton;
+    public TMP_Text upgradeButtonText;
 
     private Node target;
 
@@ -35,6 +40,10 @@ public class UpgradeShopUI : MonoBehaviour
             turretMaxRange.text = $"Max Range: {data.maxRange}";
             maxAmmo.text = $"Ammo: {data.maxBullets}";
             reloadTime.text = $"Reload: {data.reloadTime}s";
+
+            // Calculate and update the button text
+            int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
+            upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
         }
         else
         {
@@ -44,6 +53,13 @@ public class UpgradeShopUI : MonoBehaviour
             turretMaxRange.text = "???";
             maxAmmo.text = "???";
             reloadTime.text = "???";
+            upgradeButtonText.text = "Upgrade \"???\"";
         }
+
+        upgradeButton.onClick.RemoveAllListeners(); // Clear previous listeners
+        upgradeButton.onClick.AddListener(() =>
+        {
+            TurretUpgradeManager.Instance.UpgradeTurret(target);
+        });
     }
 }

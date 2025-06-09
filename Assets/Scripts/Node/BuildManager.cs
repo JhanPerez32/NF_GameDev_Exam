@@ -52,7 +52,7 @@ namespace NF.TD.BuildCore
             TurretTower turretScript = turret.GetComponent<TurretTower>();
             if (turretScript != null)
             {
-                turretScript.turretData = turretToBuild;
+                turretScript.turretData = turretToBuild.Clone();
             }
 
             Debug.Log("Turret Build, Money Left " + PlayerStats.Money);

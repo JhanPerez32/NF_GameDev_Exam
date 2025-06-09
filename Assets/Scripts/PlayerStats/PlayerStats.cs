@@ -26,7 +26,7 @@ namespace NF.TD.PlayerCore
             set
             {
                 lives = value;
-                Debug.Log($"Lives SET to: {lives}");
+                //Debug.Log($"Lives SET to: {lives}");
                 if (UIManager.Instance != null)
                 {
                     UIManager.Instance.UpdateLivesUI(lives);
