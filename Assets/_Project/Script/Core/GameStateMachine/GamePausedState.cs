@@ -14,7 +14,6 @@ namespace NF.Main.Core.GameStateMachine
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log("Game paused state");
 
             Time.timeScale = 0f;
 

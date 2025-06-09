@@ -2,11 +2,9 @@ using NF.TD.BaseTurret;
 using NF.TD.BuildArea;
 using NF.TD.BuildCore;
 using NF.TD.Extensions;
-using NF.TD.PlayerCore;
 using NF.TD.Turret;
 using NF.TD.UICore;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace NF.TD.Upgrade 
 {
@@ -18,7 +16,6 @@ namespace NF.TD.Upgrade
         {
             if (Instance != null)
             {
-                Debug.LogError("Multiple TurretUpgradeManagers found!");
                 return;
             }
             Instance = this;
@@ -36,7 +33,6 @@ namespace NF.TD.Upgrade
             //Stop if max level reached
             if (turretData.turretLevel >= turretData.maxTurretLevel)
             {
-                Debug.Log("Turret is already at max level.");
                 return;
             }
 
@@ -44,7 +40,6 @@ namespace NF.TD.Upgrade
 
             if (!PlayerStatsExtension.SpendMoney(upgradeCost))
             {
-                Debug.Log("Not Enough Money to Upgrade!");
                 return;
             }
 
@@ -75,8 +70,6 @@ namespace NF.TD.Upgrade
             node.turret = null;
 
             BuildManager.instance.DeselectTurret();
-
-            Debug.Log($"Turret sold for {sellPrice}");
         }
     }
 }
