@@ -114,5 +114,13 @@ namespace NF.TD.UICore
                 upgradeShopUI.SetActive(true);
             }
         }
+
+        public void HideUpgradeShop()
+        {
+            if(upgradeShopUI != null)
+            {
+                upgradeShopUI.SetActive(false);
+            }
+        }
     }
 }

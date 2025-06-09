@@ -3,9 +3,11 @@ using NF.TD.BuildArea;
 using NF.TD.Turret;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeShopUI : MonoBehaviour
 {
+    public Image turretIcon;
     public TMP_Text turretNameText;
     public TMP_Text turretLevelText;
     public TMP_Text turretMinRange;
@@ -21,11 +23,12 @@ public class UpgradeShopUI : MonoBehaviour
 
         transform.position = target.GetBuildPosition();
 
-        TurretTower turretComponent = target.turret?.GetComponent<TurretTower>();
+        TurretTower turretComponent = target.turret.GetComponent<TurretTower>();
         if (turretComponent != null && turretComponent.turretData != null)
         {
             TurretScriptable data = turretComponent.turretData;
 
+            turretIcon.sprite = data.turretIcon;
             turretNameText.text = data.TurretName;
             turretLevelText.text = $"Lvl: {data.turretLevel}";
             turretMinRange.text = $"Min Range: {data.minRange}";

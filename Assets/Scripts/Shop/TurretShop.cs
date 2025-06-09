@@ -33,7 +33,7 @@ namespace NF.TD.TurretShop
             if (Input.GetMouseButtonDown(1)) // Right click
             {
                 buildManager.DeselectTurret();
-                selectedTurretImageUI.sprite = null;
+                ShopTurretSelect.Deselect();
                 Debug.Log("Turret deselected.");
             }
         }
@@ -62,7 +62,7 @@ namespace NF.TD.TurretShop
                 Debug.Log($"Selected turret: {turret.TurretName}");
             });
 
-            ShopTurretHover hoverScript = btnGO.AddComponent<ShopTurretHover>();
+            ShopTurretSelect hoverScript = btnGO.AddComponent<ShopTurretSelect>();
             hoverScript.turretInfo = turretInfo.gameObject;
             turretInfo.gameObject.SetActive(false);
         }

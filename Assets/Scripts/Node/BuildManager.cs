@@ -60,8 +60,6 @@ namespace NF.TD.BuildCore
 
         /// <summary>
         /// Selects the given Node (with a turret) to display its turret's range visualizer.
-        /// - Still working on this parts
-        ///             v
         /// - Hides the range visualizer of the previously selected turret (if any).
         /// - Shows the range visualizer for the newly selected turret.
         /// - Updates the `selectedNode` reference.
@@ -109,6 +107,8 @@ namespace NF.TD.BuildCore
             turretToBuild = turret;
             selectedNode = null;
 
+            UIManager.Instance.HideUpgradeShop();
+
         }
 
         public void DeselectTurret()
@@ -125,6 +125,8 @@ namespace NF.TD.BuildCore
 
             turretToBuild = null;
             selectedNode = null;
+
+            UIManager.Instance.HideUpgradeShop();
         }
     }
 }

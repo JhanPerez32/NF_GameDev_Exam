@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5513c04f1e5d2214daf4ab8f746643ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretIcon: {fileID: 2085486022}
   turretNameText: {fileID: 789687069}
   turretLevelText: {fileID: 2042918691}
   turretMinRange: {fileID: 685386198}
