@@ -44,10 +44,8 @@ namespace NF.TD.Upgrade
             // Track total spent cost
             turretComponent.totalSpentCost += upgradeCost;
 
-            // Upgrade turret Level
-            turretData.turretLevel++;
-
-            Debug.Log($"Turret upgraded to Level {turretData.turretLevel}. Money left: {PlayerStats.Money}");
+            // Upgrade all other attributes
+            turretData.UpgradeTurretAttributes(turretComponent);
 
             // Refreshes the UpgradeShopUI to show the new values
             UIManager.Instance.ShowUpgradeShop(node);

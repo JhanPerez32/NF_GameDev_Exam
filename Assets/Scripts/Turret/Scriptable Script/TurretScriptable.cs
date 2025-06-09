@@ -24,6 +24,7 @@ namespace NF.TD.BaseTurret
         [Tooltip("Purchase Cost")]
         public int turretCost;
 
+        //Default Values
         [Header("Turret Range")]
         public float minRange = 15f;
         public float maxRange = 30f;
