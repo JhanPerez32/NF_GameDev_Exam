@@ -11,6 +11,8 @@ namespace NF.TD.SpawnEnemy
 {
     public class EnemySpawn : MonoBehaviour
     {
+        public static int CurrentWave { get; private set; } = 0;
+
         public EnemyScriptable enemyData;
 
         public Transform spawnPoint;
@@ -37,14 +39,15 @@ namespace NF.TD.SpawnEnemy
             countdown -= Time.deltaTime;
             countdown = Mathf.Max(0f, countdown);
 
-            UIManager.Instance?.UpdateWaveCountdown(countdown);
+            UIManager.Instance.UpdateWaveCountdown(countdown);
         }
 
         IEnumerator SpawnWave()
         {
             waveIndex++;
+            CurrentWave = waveIndex;
 
-            UIManager.Instance?.UpdateWaveNumberUI(waveIndex);
+            UIManager.Instance.UpdateWaveNumberUI(waveIndex);
 
             for (int i = 0; i < waveIndex; i++)
             {

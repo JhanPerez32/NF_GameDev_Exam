@@ -1,8 +1,9 @@
 using NF.TD.Interfaces;
 using NF.TD.BaseEnemy;
 using NF.TD.EnemyPath;
-using UnityEngine;
+using NF.TD.Enemy.UI;
 using NF.TD.Extensions;
+using UnityEngine;
 
 namespace NF.TD.Enemy.Core
 {
@@ -13,15 +14,14 @@ namespace NF.TD.Enemy.Core
     {
         public EnemyScriptable enemyScriptable;
 
-        [Tooltip("Keep it 0 since it will take in the Value on the" +
-            "its Scriptable GameObject, kindly edit there")]
-        private int health;
+        protected int health;
+        protected EnemyHealthBar healthBar;
         private int rewardValue;
         private int DMGToBase;
         private Transform target;
         private int wavepointIndex = 0;
 
-        private void Start()
+        protected virtual void Start()
         {
             //Will start at the very first Waypoint gameobject
             target = Waypoints.points[0];
@@ -29,6 +29,13 @@ namespace NF.TD.Enemy.Core
             health = enemyScriptable.health;
             rewardValue = enemyScriptable.rewardValue;
             DMGToBase = enemyScriptable.DMGToBase;
+
+            healthBar = GetComponentInChildren<EnemyHealthBar>();
+            if (healthBar != null)
+            {
+                healthBar.followTarget = transform;
+                healthBar.SetMaxHealth(health);
+            }
         }
 
         //Moves the enemy toward the current target waypoint.
@@ -67,6 +74,11 @@ namespace NF.TD.Enemy.Core
         public void TakeDamage(int amount)
         {
             health -= amount;
+
+            if (healthBar != null)
+            {
+                healthBar.SetHealth(health);
+            }
 
             if (enemyScriptable.hitFX != null)
             {
