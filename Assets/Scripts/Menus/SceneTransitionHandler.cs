@@ -10,14 +10,14 @@ namespace NF.Main.UI
         [SerializeField] private GameObject loadingScreen;
 
         [Header("Scene Names")]
-        [SerializeField] private string mainMenuSceneName;
+        [SerializeField] private string sceneName;
 
         /// <summary>
         /// Called by Main Menu button
         /// </summary>
-        public void LoadMainMenu()
+        public void LoadScene()
         {
-            StartCoroutine(LoadSceneRoutine(mainMenuSceneName));
+            StartCoroutine(LoadSceneRoutine(sceneName));
         }
 
         /// <summary>
