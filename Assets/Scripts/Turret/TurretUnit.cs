@@ -25,6 +25,9 @@ namespace NF.TD.TurretCore
             "(Eg. Connector on Body into Head" +
             "and Body to Gun)")]
         public TurretJoints[] turretJoints;
+        [Tooltip("Allowed rotation error when aiming — smaller = more accurate")]
+        [Range(0f, 360f)]
+        public float aimTolerance;
 
         [Header("Target Tag")]
         public string enemyTag = "Enemy";
@@ -42,6 +45,7 @@ namespace NF.TD.TurretCore
                 {
                     mountPoint.minRange = turretData.minRange;
                     mountPoint.maxRange = turretData.maxRange;
+                    mountPoint.aimTolerance = aimTolerance;
                 }
             }
 

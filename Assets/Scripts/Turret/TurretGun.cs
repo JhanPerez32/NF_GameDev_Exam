@@ -26,6 +26,9 @@ namespace NF.TD.Gun
         //Multiple Spawn Bullet Points, can be also be a single gun
         public Transform[] bulletSpawnPoint;
 
+        [Header("Muzzle Flash")]
+        public GameObject[] muzzleFlash;
+
         private TurretScriptable turretData;
         private float lastSpreadScale;
         private float lastFireRate;
@@ -97,6 +100,15 @@ namespace NF.TD.Gun
             if (shotGo.TryGetComponent(out Projectile shot))
             {
                 shot.Initialize(turretData.projectileSpeed, turretData.projectileDamage);
+            }
+
+            // Randomized muzzle flash
+            if (muzzleFlash != null && muzzleFlash.Length > 0)
+            {
+                int flashIndex = Random.Range(0, muzzleFlash.Length);
+                GameObject flash = Instantiate(muzzleFlash[flashIndex], gunPoint.position, gunPoint.rotation);
+
+                Destroy(flash, 2f);
             }
 
             gunPointIndex %= bulletSpawnPoint.Length;

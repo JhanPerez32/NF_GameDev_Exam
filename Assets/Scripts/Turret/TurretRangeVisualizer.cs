@@ -53,7 +53,7 @@ namespace NF.TD.TurretVisualRange
         }
 
 #if UNITY_EDITOR
-        void OnDrawGizmos()
+        void OnDrawGizmosSelected()
         {
             if (turret == null)
                 turret = GetComponent<TurretTower>();

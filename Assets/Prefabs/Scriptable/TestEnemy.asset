@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3550672398161207577, guid: 2857207eee10ac64293b6138ad8f61e0, type: 3}
-  speed: 20
-  health: 20
+  speed: 5
+  health: 100
   rewardValue: 25
   DMGToBase: 1
