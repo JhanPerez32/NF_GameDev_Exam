@@ -12,6 +12,9 @@ namespace NF.TD.BaseEnemy
         [Header("Enemy Model")]
         public GameObject enemyPrefab;
 
+        [Header("Hit/Destroy FX")]
+        public GameObject hitFX;
+
         [Header("Movement Speed")]
         public float speed = 10f;
 

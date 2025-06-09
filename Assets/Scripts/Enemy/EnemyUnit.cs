@@ -68,6 +68,12 @@ namespace NF.TD.Enemy.Core
         {
             health -= amount;
 
+            if (enemyScriptable.hitFX != null)
+            {
+                GameObject fx = Instantiate(enemyScriptable.hitFX, transform.position, Quaternion.identity);
+                Destroy(fx, 2f);
+            }
+
             if (health <= 0)
             {
                 Die();
