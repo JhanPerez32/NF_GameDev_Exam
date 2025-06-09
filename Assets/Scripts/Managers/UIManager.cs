@@ -48,10 +48,10 @@ namespace NF.TD.UICore
 
         public void UpdateWaveCountdown(float countdown)
         {
-            if (waveCountdownText != null)
-            {
-                waveCountdownText.text = countdown.ToString("00.00");
-            }
+            int seconds = Mathf.FloorToInt(countdown);
+            int milliseconds = Mathf.FloorToInt((countdown - seconds) * 100);
+
+            waveCountdownText.text = string.Format("{0:00}:{1:00}", seconds, milliseconds);
         }
 
         public void UpdateLivesUI(int amount)

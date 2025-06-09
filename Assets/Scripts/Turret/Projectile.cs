@@ -1,6 +1,4 @@
-using NF.TD.Enemy.Core;
 using NF.TD.Interfaces;
-using UniRx.Examples;
 using UnityEngine;
 
 namespace NF.TD.Bullet
@@ -24,7 +22,7 @@ namespace NF.TD.Bullet
             // Calculate the velocity based on the object's forward direction and speed
             velocity = transform.forward * speed;
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 1f);
         }
 
         void FixedUpdate()

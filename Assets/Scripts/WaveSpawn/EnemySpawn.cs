@@ -1,4 +1,3 @@
-using NF.Main.Core.PlayerStateMachine;
 using NF.TD.BaseEnemy;
 using NF.TD.Interfaces;
 using NF.TD.PlayerCore;
@@ -23,6 +22,9 @@ namespace NF.TD.SpawnEnemy
         private int waveIndex = 0;
         private ISpawner spawner;
 
+        private bool isCountingDown = false;
+        private bool waveInProgress = false;
+
         private void Awake()
         {
             spawner = new DefaultSpawner(); // Could be injected later
@@ -30,16 +32,37 @@ namespace NF.TD.SpawnEnemy
 
         private void Update()
         {
-            if (countdown <= 0f)
+            if (!waveInProgress && AreEnemiesAlive() == false && !isCountingDown)
             {
-                StartCoroutine(SpawnWave());
+                // Start countdown after previous wave cleared
+                isCountingDown = true;
                 countdown = timeBetweenWaves;
             }
 
-            countdown -= Time.deltaTime;
-            countdown = Mathf.Max(0f, countdown);
+            if (isCountingDown)
+            {
+                countdown -= Time.deltaTime;
+                countdown = Mathf.Max(0f, countdown);
 
-            UIManager.Instance.UpdateWaveCountdown(countdown);
+                UIManager.Instance.UpdateWaveCountdown(countdown);
+
+                if (countdown <= 0f)
+                {
+                    StartCoroutine(SpawnWave());
+                    isCountingDown = false;
+                    waveInProgress = true;
+                }
+            }
+            else if (waveInProgress)
+            {
+                // During wave: Freeze countdown at 0
+                UIManager.Instance.UpdateWaveCountdown(0f);
+
+                if (!AreEnemiesAlive())
+                {
+                    waveInProgress = false; // Ready for next wave countdown
+                }
+            }
         }
 
         IEnumerator SpawnWave()
@@ -61,6 +84,11 @@ namespace NF.TD.SpawnEnemy
         void SpawnEnemy()
         {
             spawner.Spawn(enemyData, spawnPoint);
+        }
+
+        bool AreEnemiesAlive()
+        {
+            return GameObject.FindGameObjectsWithTag("Enemy").Length > 0;
         }
     }
 }
