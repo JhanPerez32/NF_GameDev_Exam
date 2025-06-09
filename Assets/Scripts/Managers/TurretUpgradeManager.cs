@@ -33,6 +33,13 @@ namespace NF.TD.Upgrade
 
             TurretScriptable turretData = turretComponent.turretData;
 
+            //Stop if max level reached
+            if (turretData.turretLevel >= turretData.maxTurretLevel)
+            {
+                Debug.Log("Turret is already at max level.");
+                return;
+            }
+
             int upgradeCost = Mathf.RoundToInt(turretData.turretCost * 0.5f * turretData.turretLevel);
 
             if (!PlayerStatsExtension.SpendMoney(upgradeCost))

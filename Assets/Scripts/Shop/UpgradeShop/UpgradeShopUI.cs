@@ -50,8 +50,21 @@ namespace NF.TD.Upgrade
                 reloadTime.text = $"Reload: {data.reloadTime}s";
 
                 // Calculate and update the button text
-                int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
-                upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
+                //int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
+                //upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
+
+                // Check max level
+                if (data.turretLevel >= data.maxTurretLevel)
+                {
+                    upgradeButtonText.text = "MAX";
+                    upgradeButton.interactable = false;
+                }
+                else
+                {
+                    int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);
+                    upgradeButtonText.text = $"Upgrade \"{upgradeCost}\"";
+                    upgradeButton.interactable = true;
+                }
 
                 // Show sell price on the Button
                 int sellPrice = turretComponent.GetSellPrice();

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace NF.TD.BaseTurret
 {
@@ -14,6 +13,7 @@ namespace NF.TD.BaseTurret
 
         [Header("Turret Level")]
         public int turretLevel = 1;
+        public int maxTurretLevel = 3;
 
         [Tooltip("Base Model of the Turret")]
         public GameObject turretModel;

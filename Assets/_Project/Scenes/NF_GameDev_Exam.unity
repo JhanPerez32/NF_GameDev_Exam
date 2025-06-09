@@ -2121,7 +2121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947bd9c18807e7a4c89e9d5eb937994c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoney: 100
+  startingMoney: 75
   startingLives: 5
 --- !u!1 &404275522 stripped
 GameObject:
