@@ -38,13 +38,13 @@ namespace NF.TD.Extensions
             turretData.maxRange = upgraded.maxRange; //Updating
             turretData.maxBullets = upgraded.maxBullets; //Updating
             turretData.fireRate = upgraded.fireRate; //Updating
-            turretData.spreadScale = upgraded.spreadScale; //Temporary fix for the moment until I find whats wrong when using the TurretData like the rest
+            turretData.spreadScale = upgraded.spreadScale; //Updating
             turretData.reloadTime = upgraded.reloadTime; //Updating
             turretData.projectileDamage = upgraded.projectileDamage; //Updating
 
             turretData.turretLevel++;
 
-            Debug.Log("Spread Scale: " + turretData.spreadScale);
+            //Debug.Log("Damage: " + turretData.projectileDamage);
         }
     }
 }

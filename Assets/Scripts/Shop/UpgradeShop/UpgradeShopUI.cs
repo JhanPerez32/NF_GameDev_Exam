@@ -18,6 +18,7 @@ namespace NF.TD.Upgrade
         public TMP_Text turretAccuracy;
         public TMP_Text turretMinRange;
         public TMP_Text turretMaxRange;
+        public TMP_Text damage;
         public TMP_Text maxAmmo;
         public TMP_Text reloadTime;
 
@@ -45,9 +46,10 @@ namespace NF.TD.Upgrade
                 turretIcon.sprite = data.turretIcon;
                 turretNameText.text = data.TurretName;
                 turretLevelText.text = $"Lvl: {data.turretLevel}";
-                turretAccuracy.text = $"Accuracy: {data.spreadScale}%";
+                turretAccuracy.text = $"Accuracy: {data.AccuracyPercentage:F0}%";
                 turretMinRange.text = $"Min Range: {data.minRange}";
                 turretMaxRange.text = $"Max Range: {data.maxRange}";
+                damage.text = $"Damage: {data.projectileDamage}";
                 maxAmmo.text = $"Max Ammo: {data.maxBullets}";
                 reloadTime.text = $"Reload Time: {data.reloadTime}s";
 
@@ -78,6 +80,7 @@ namespace NF.TD.Upgrade
                 turretLevelText.text = "0";
                 turretMinRange.text = "???";
                 turretMaxRange.text = "???";
+                damage.text = "???";
                 maxAmmo.text = "???";
                 reloadTime.text = "???";
                 upgradeButtonText.text = "Upgrade \"???\"";

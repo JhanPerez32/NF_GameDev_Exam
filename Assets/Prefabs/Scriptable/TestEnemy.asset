@@ -16,5 +16,6 @@ MonoBehaviour:
   hitFX: {fileID: 1169581122544059339, guid: c4e5973e3e420b4429d4f8b2fce70b9b, type: 3}
   speed: 5
   health: 100
+  increasedHealthPerWave: 50
   rewardValue: 25
   DMGToBase: 1

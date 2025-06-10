@@ -15,7 +15,7 @@ namespace NF.TD.Gun
         public float maxSpreadDistance; // Will be taking the value of maxRange in Turret.cs
         [HideInInspector]
         public float fireRate;
-        [HideInInspector]
+        
         public float spreadScale; //Will take in the Value on TurretScriptable for the Default value
 
         public TurretTower turret;
@@ -40,11 +40,6 @@ namespace NF.TD.Gun
         void Awake()
         {
             turretData = turret.turretData;
-        }
-
-        private void OnValidate()
-        {
-            spreadScale = turret.turretData.spreadScale;
         }
 
         void Update()
@@ -122,6 +117,14 @@ namespace NF.TD.Gun
         // Public method to trigger firing, can be called externally
         public void Fire()
         {
+            if (target == null) return;
+
+            foreach (var gunPoint in bulletSpawnPoint)
+            {
+                Vector3 dirToTarget = (target.position - gunPoint.position).normalized;
+                gunPoint.rotation = Quaternion.LookRotation(dirToTarget);
+            }
+
             firing = true;
         }
 

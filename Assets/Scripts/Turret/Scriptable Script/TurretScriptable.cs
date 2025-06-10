@@ -34,7 +34,7 @@ namespace NF.TD.BaseTurret
         public int maxBullets = 10;
         [Range(1f, 20f)]
         public float fireRate = 20f;
-        [Range(1f, 40f)]
+        [Range(1f, 10f)]
         public float spreadScale = 5f;
         [Range(1f, 10f)]
         public float reloadTime = 2f;
@@ -43,6 +43,12 @@ namespace NF.TD.BaseTurret
         public float projectileSpeed = 20f;
         public int projectileDamage = 10;
         //public float explosionRadius = 5;
+
+        /// <summary>
+        /// Accuracy percentage derived from spread scale.
+        /// spreadScale 1 = 100% accuracy, spreadScale 10 = 10% accuracy
+        /// </summary>
+        public int AccuracyPercentage => Mathf.Clamp(Mathf.RoundToInt(100f * (1f / spreadScale)), 1, 100);
 
         //Dynamic Naming for the Scriptable Game Object.
         //It will take in the Name of the Scriptable GameObject it self.
