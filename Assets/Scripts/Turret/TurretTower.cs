@@ -25,10 +25,14 @@ namespace NF.TD.Turret
                 }
             }
 
-            // Sync gun spread range
-            if (gun != null && gun.maxSpreadDistance != turretData.maxRange)
+            // Sync gun spread range and spread size
+            if (gun != null)
             {
-                gun.maxSpreadDistance = turretData.maxRange;
+                if (gun.maxSpreadDistance != turretData.maxRange)
+                    gun.maxSpreadDistance = turretData.maxRange;
+
+                if (!Mathf.Approximately(gun.spreadScale, turretData.spreadScale))
+                    gun.spreadScale = turretData.spreadScale;
             }
 
             // Remove target if out of range

@@ -4610,7 +4610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947bd9c18807e7a4c89e9d5eb937994c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMoney: 75
+  startingMoney: 9999
   startingLives: 5
 --- !u!1001 &400149214
 PrefabInstance:
@@ -18146,7 +18146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1698688966
 Transform:
   m_ObjectHideFlags: 0

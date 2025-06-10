@@ -15,6 +15,7 @@ namespace NF.TD.Upgrade
         public Image turretIcon;
         public TMP_Text turretNameText;
         public TMP_Text turretLevelText;
+        public TMP_Text turretAccuracy;
         public TMP_Text turretMinRange;
         public TMP_Text turretMaxRange;
         public TMP_Text maxAmmo;
@@ -44,10 +45,11 @@ namespace NF.TD.Upgrade
                 turretIcon.sprite = data.turretIcon;
                 turretNameText.text = data.TurretName;
                 turretLevelText.text = $"Lvl: {data.turretLevel}";
+                turretAccuracy.text = $"Accuracy: {data.spreadScale}%";
                 turretMinRange.text = $"Min Range: {data.minRange}";
                 turretMaxRange.text = $"Max Range: {data.maxRange}";
-                maxAmmo.text = $"Ammo: {data.maxBullets}";
-                reloadTime.text = $"Reload: {data.reloadTime}s";
+                maxAmmo.text = $"Max Ammo: {data.maxBullets}";
+                reloadTime.text = $"Reload Time: {data.reloadTime}s";
 
                 // Calculate and update the button text
                 //int upgradeCost = Mathf.RoundToInt(data.turretCost * 0.5f * data.turretLevel);

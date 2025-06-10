@@ -755,7 +755,7 @@ MonoBehaviour:
   target: {fileID: 0}
   maxSpreadDistance: 15
   fireRate: 0
-  spreadScale: 0
+  spreadScale: 5
   turret: {fileID: 6728009308077406553}
   shotPrefab: {fileID: 8853936679608007497, guid: 92a33d02f4e95d04ea07b0361e016505, type: 3}
   bulletSpawnPoint:

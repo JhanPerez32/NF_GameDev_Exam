@@ -16,7 +16,7 @@ namespace NF.TD.Gun
         [HideInInspector]
         public float fireRate;
         [HideInInspector]
-        public float spreadScale; //Will take in the Value on TurretScriptable
+        public float spreadScale; //Will take in the Value on TurretScriptable for the Default value
 
         public TurretTower turret;
 
@@ -40,6 +40,11 @@ namespace NF.TD.Gun
         void Awake()
         {
             turretData = turret.turretData;
+        }
+
+        private void OnValidate()
+        {
+            spreadScale = turret.turretData.spreadScale;
         }
 
         void Update()

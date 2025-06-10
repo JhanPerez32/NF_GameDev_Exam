@@ -17,12 +17,12 @@ namespace NF.TD.BaseTurret
         {
             TurretAttributes upgraded = new TurretAttributes
             {
-                minRange = RoundToTwoDecimals(Mathf.Max(0, current.minRange - 0.2f)),
+                minRange = RoundToTwoDecimals(Mathf.Max(1f, current.minRange - 0.2f)),
                 maxRange = RoundToTwoDecimals(current.maxRange + 0.2f),
                 maxBullets = Mathf.CeilToInt(current.maxBullets + 0.5f),
                 fireRate = RoundToTwoDecimals(current.fireRate + 0.1f),
-                spreadScale = RoundToTwoDecimals(Mathf.Max(0, current.spreadScale - 0.1f)),
-                reloadTime = RoundToTwoDecimals(Mathf.Max(0, current.reloadTime - 0.1f)),
+                spreadScale = RoundToTwoDecimals(Mathf.Max(2f, current.spreadScale - 1f)),
+                reloadTime = RoundToTwoDecimals(Mathf.Max(2f, current.reloadTime - 0.1f)),
                 projectileDamage = Mathf.CeilToInt(current.projectileDamage + 0.5f)
             };
 

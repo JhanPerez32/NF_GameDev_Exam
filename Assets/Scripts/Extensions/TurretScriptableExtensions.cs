@@ -1,5 +1,6 @@
 using NF.TD.BaseTurret;
 using NF.TD.Turret;
+using UnityEngine;
 
 namespace NF.TD.Extensions 
 {
@@ -25,7 +26,7 @@ namespace NF.TD.Extensions
                 maxRange = turretData.maxRange,
                 maxBullets = turretData.maxBullets,
                 fireRate = turretData.fireRate,
-                spreadScale = turretData.spreadScale,
+                spreadScale = turretComponent.gun.spreadScale,
                 reloadTime = turretData.reloadTime,
                 projectileDamage = turretData.projectileDamage
             };
@@ -33,15 +34,17 @@ namespace NF.TD.Extensions
             TurretAttributes upgraded = TurretUpgradeUtils.UpgradeAttributes(current);
 
             // Apply upgraded values back to the ScriptableObject instance
-            turretData.minRange = upgraded.minRange;
-            turretData.maxRange = upgraded.maxRange;
-            turretData.maxBullets = upgraded.maxBullets;
-            turretData.fireRate = upgraded.fireRate;
-            turretData.spreadScale = upgraded.spreadScale;
-            turretData.reloadTime = upgraded.reloadTime;
-            turretData.projectileDamage = upgraded.projectileDamage;
+            turretData.minRange = upgraded.minRange; //Updating
+            turretData.maxRange = upgraded.maxRange; //Updating
+            turretData.maxBullets = upgraded.maxBullets; //Updating
+            turretData.fireRate = upgraded.fireRate; //Updating
+            turretData.spreadScale = upgraded.spreadScale; //Temporary fix for the moment until I find whats wrong when using the TurretData like the rest
+            turretData.reloadTime = upgraded.reloadTime; //Updating
+            turretData.projectileDamage = upgraded.projectileDamage; //Updating
 
             turretData.turretLevel++;
+
+            Debug.Log("Spread Scale: " + turretData.spreadScale);
         }
     }
 }
