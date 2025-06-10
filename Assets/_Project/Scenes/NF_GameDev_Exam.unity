@@ -4116,6 +4116,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2146833392}
   - {fileID: 1253346658}
   - {fileID: 1544119763}
   - {fileID: 1437508509}
@@ -4123,7 +4124,6 @@ RectTransform:
   - {fileID: 316025116}
   - {fileID: 545651046}
   - {fileID: 1435760140}
-  - {fileID: 2146833392}
   m_Father: {fileID: 231922630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23688,7 +23688,7 @@ GameObject:
   - component: {fileID: 2146833394}
   - component: {fileID: 2146833393}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Simple Guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24994,7 +24994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374231014544852472, guid: b86e2a500125c2a43a2e2cd22f580b4e, type: 3}
       propertyPath: m_fontSize
-      value: 53.5
+      value: 57.5
       objectReference: {fileID: 0}
     - target: {fileID: 5374231014544852472, guid: b86e2a500125c2a43a2e2cd22f580b4e, type: 3}
       propertyPath: m_fontStyle

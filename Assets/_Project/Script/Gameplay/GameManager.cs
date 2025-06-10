@@ -26,7 +26,7 @@ namespace NF.Main.Gameplay
                 EndGame();
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (GameState == GameState.Playing)
                 {
