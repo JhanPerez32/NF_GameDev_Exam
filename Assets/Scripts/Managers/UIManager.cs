@@ -58,7 +58,7 @@ namespace NF.TD.UICore
         {
             if (liveText != null)
             {
-                liveText.text = amount.ToString();
+                liveText.text = $"Lives: {amount}";
             }
         }
 
