@@ -1,8 +1,6 @@
-#if UNITY_EDITOR
 using NF.TD.Gun;
 using NF.TD.Turret;
 using UnityEditor;
-#endif
 using UnityEngine;
 
 namespace NF.TD.TurretVisualRange
@@ -52,7 +50,7 @@ namespace NF.TD.TurretVisualRange
             }
         }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
         void OnDrawGizmos()
         {
             if (turret == null)
@@ -148,7 +146,7 @@ namespace NF.TD.TurretVisualRange
                 }
             }
         }
-#endif
+#endif*/
 
         public void SetVisualizerVisible(bool visible)
         {
