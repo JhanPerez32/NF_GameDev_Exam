@@ -14,7 +14,7 @@ Tower Defense Game
 
 Overview:
 
-- It can be used for Ground or Air based on how the turret was setup. Its unique spray-and-pray mechanic unleashes a wide spread of bullets, saturating the target area rather than locking on to individual enemies.
+- Its unique SPRAY-and-PRAY mechanic unleashes a wide spread of bullets, saturating the target area rather than locking on to individual enemies.
       
 Key Features:
 
