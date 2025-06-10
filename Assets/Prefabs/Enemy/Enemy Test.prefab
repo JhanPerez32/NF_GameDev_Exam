@@ -259,7 +259,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.75
+  m_Radius: 0.85
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6427917538794229122
 MonoBehaviour:
@@ -274,7 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyScriptable: {fileID: 11400000, guid: ffd726620cb361f478e89faead1bc7b8, type: 2}
-  increasedHealthPerWave: 100
 --- !u!114 &9168353677455522465
 MonoBehaviour:
   m_ObjectHideFlags: 0
