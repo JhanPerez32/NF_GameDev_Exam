@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792d8ab4c220f4b4689271b7ebe00b68, type: 3}
+  m_Name: TestEnemy
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 3550672398161207577, guid: 2857207eee10ac64293b6138ad8f61e0, type: 3}
+  hitFX: {fileID: 1169581122544059339, guid: c4e5973e3e420b4429d4f8b2fce70b9b, type: 3}
+  speed: 5
+  health: 100
+  increasedHealthPerWave: 50
+  rewardValue: 25
+  DMGToBase: 1
